@@ -31,7 +31,7 @@ public protocol APIRequest {
     
     var path: String { get }
     
-    var parameters: APIRequestParameter { get }
+    var parameters: APIRequestParameter? { get }
     
     var httpHeaderFields: [String : String] { get }
     
