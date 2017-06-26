@@ -15,9 +15,9 @@ public struct APIRequestParameterArray: APIRequestParameter {
         self.values = values
     }
     
-    public func parameterValue() -> APIRequestParameter {
+    public func requestParameterValue() -> APIRequestParameter {
         return self.values.map({
-            return $0.parameterValue()
+            return $0.requestParameterValue()
         })
     }
 }

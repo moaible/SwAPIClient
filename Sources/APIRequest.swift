@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum APIRequestMethod: String {
+public enum HTTPMethod: String {
     
     case get = "GET"
     case post = "POST"
@@ -27,13 +27,15 @@ public protocol APIRequest {
     
     var baseURL: URL { get }
     
-    var method: APIRequestMethod { get }
+    var method: HTTPMethod { get }
     
     var path: String { get }
     
+    var httpHeaderFields: [String : String] { get }
+    
     var parameters: APIRequestParameter? { get }
     
-    var httpHeaderFields: [String : String] { get }
+    var parameterEncoding: APIRequestParameterEncoding { get }
     
     func canParse(for data: Data, response: HTTPURLResponse) -> Bool
     
@@ -46,6 +48,13 @@ extension APIRequest {
     
     var parameters: APIRequestParameter? {
         return nil
+    }
+    
+    var parameterEncoding: APIRequestParameterEncoding {
+        if [.get, .head, .delete].contains(self.method) {
+            return URLEncoding()
+        }
+        return JSONEncoding()
     }
     
     func canParse(for data: Data, response: HTTPURLResponse) -> Bool {

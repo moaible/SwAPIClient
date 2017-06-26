@@ -24,6 +24,7 @@ class APIRequestTests: XCTestCase {
         XCTAssertEqual(getRequest.path, "/get")
         XCTAssertEqual(getRequest.httpHeaderFields, [:])
         XCTAssertEqual(getRequest.method, .get)
+        XCTAssertEqual((getRequest.parameters as? APIRequestParameterDictionary)?.value["test"] as? String, "value1")
         XCTAssertEqual(try? getRequest.parse(for: Data(), response: HTTPURLResponse()), true)
         XCTAssertEqual(getRequest.mockResponse(), false)
     }

@@ -9,5 +9,5 @@ import Foundation
 
 public protocol APIRequestParameter {
     
-    func parameterValue() -> APIRequestParameter
+    func requestParameterValue() -> APIRequestParameter
 }

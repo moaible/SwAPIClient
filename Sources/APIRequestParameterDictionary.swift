@@ -26,16 +26,16 @@ public struct APIRequestParameterDictionary: APIRequestParameter {
         self.readingOption = option
     }
     
-    public func parameterValue() -> APIRequestParameter {
+    public func requestParameterValue() -> APIRequestParameter {
         var dictionary: [String: APIRequestParameter] = [:]
         for (k, v) in value {
             switch self.readingOption {
             case .ignoreNull:
-                if let parameter = v?.parameterValue() {
+                if let parameter = v?.requestParameterValue() {
                     dictionary[k] = parameter
                 }
             case .allowNull:
-                dictionary[k] = v?.parameterValue() ?? NSNull().parameterValue()
+                dictionary[k] = v?.requestParameterValue() ?? NSNull().requestParameterValue()
             }
         }
         return dictionary
@@ -49,7 +49,7 @@ protocol APIRequestParameterDictionaryConvertible: APIRequestParameter {
 
 extension APIRequestParameterDictionaryConvertible {
     
-    func parameterValue() -> APIRequestParameter {
-        return requestParameterDictionary().parameterValue()
+    func requestParameterValue() -> APIRequestParameter {
+        return requestParameterDictionary().requestParameterValue()
     }
 }

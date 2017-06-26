@@ -18,16 +18,11 @@ class APIRequestBuilderTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testExampleRequestBuild() {
         do {
             let request: URLRequest = try APIRequestBuilder.build(with: ExampleGETRequest())
-            XCTAssertEqual("http://example.com/get", request.url?.absoluteString)
-            XCTAssertEqual("", "")
-            XCTAssertEqual("", "")
-            XCTAssertEqual("", "")
-            XCTAssertEqual("", "")
-            XCTAssertEqual("", "")
-            XCTAssertEqual("", "")
+            XCTAssertEqual(request.url?.absoluteString, "http://example.com/get?test=value1")
+            XCTAssertEqual(request.httpMethod, "GET")
         } catch {
             
         }

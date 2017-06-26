@@ -9,49 +9,52 @@ import Foundation
 
 extension Bool: APIRequestParameter {
     
-    public func parameterValue() -> APIRequestParameter {
+    public func requestParameterValue() -> APIRequestParameter {
         return self
     }
 }
 
 extension Int: APIRequestParameter {
     
-    public func parameterValue() -> APIRequestParameter {
+    public func requestParameterValue() -> APIRequestParameter {
         return self
     }
 }
 
 extension Float: APIRequestParameter {
     
-    public func parameterValue() -> APIRequestParameter {
+    public func requestParameterValue() -> APIRequestParameter {
         return self
     }
 }
 
 extension Double: APIRequestParameter {
     
-    public func parameterValue() -> APIRequestParameter {
+    public func requestParameterValue() -> APIRequestParameter {
         return self
     }
 }
 
 extension String: APIRequestParameter {
     
-    public func parameterValue() -> APIRequestParameter {
+    public func requestParameterValue() -> APIRequestParameter {
         return self
     }
 }
 
 extension Array: APIRequestParameter {
     
-    public func parameterValue() -> APIRequestParameter {
-        return self
+    public func requestParameterValue() -> APIRequestParameter {
+        guard let castSelf = self as? [APIRequestParameter] else {
+            return NSNull().requestParameterValue()
+        }
+        return APIRequestParameterArray(castSelf)
     }
 }
 
 extension Dictionary: APIRequestParameter {
     
-    public func parameterValue() -> APIRequestParameter {
+    public func requestParameterValue() -> APIRequestParameter {
         return self
     }
 }
@@ -59,20 +62,20 @@ extension Dictionary: APIRequestParameter {
 
 extension NSNull: APIRequestParameter {
     
-    public func parameterValue() -> APIRequestParameter {
+    public func requestParameterValue() -> APIRequestParameter {
         return self
     }
 }
 
 extension Optional: APIRequestParameter {
     
-    public func parameterValue() -> APIRequestParameter {
+    public func requestParameterValue() -> APIRequestParameter {
         guard let bindSelf = self else {
-            return NSNull().parameterValue()
+            return NSNull().requestParameterValue()
         }
         guard let parameter = bindSelf as? APIRequestParameter else {
-            fatalError("APIRequestParameterError.castError")
+            return NSNull().requestParameterValue()
         }
-        return parameter.parameterValue()
+        return parameter.requestParameterValue()
     }
 }
