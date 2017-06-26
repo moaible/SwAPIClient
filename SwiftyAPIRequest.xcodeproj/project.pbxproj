@@ -6,14 +6,24 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CE2BCB571F01D52500711238 /* APIRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BCB4F1F01D52500711238 /* APIRequestAdapter.swift */; };
+		CE2BCB581F01D52500711238 /* APIRequestParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BCB511F01D52500711238 /* APIRequestParameterEncoding.swift */; };
+		CE2BCB591F01D52500711238 /* APIRequestParameter+Confirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BCB531F01D52500711238 /* APIRequestParameter+Confirm.swift */; };
+		CE2BCB5A1F01D52500711238 /* APIRequestParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BCB541F01D52500711238 /* APIRequestParameter.swift */; };
+		CE2BCB5B1F01D52500711238 /* APIRequestParameterArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BCB551F01D52500711238 /* APIRequestParameterArray.swift */; };
+		CE2BCB5C1F01D52500711238 /* APIRequestParameterDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BCB561F01D52500711238 /* APIRequestParameterDictionary.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		CE2BCB4F1F01D52500711238 /* APIRequestAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequestAdapter.swift; sourceTree = "<group>"; };
+		CE2BCB511F01D52500711238 /* APIRequestParameterEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequestParameterEncoding.swift; sourceTree = "<group>"; };
+		CE2BCB531F01D52500711238 /* APIRequestParameter+Confirm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIRequestParameter+Confirm.swift"; sourceTree = "<group>"; };
+		CE2BCB541F01D52500711238 /* APIRequestParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequestParameter.swift; sourceTree = "<group>"; };
+		CE2BCB551F01D52500711238 /* APIRequestParameterArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequestParameterArray.swift; sourceTree = "<group>"; };
+		CE2BCB561F01D52500711238 /* APIRequestParameterDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequestParameterDictionary.swift; sourceTree = "<group>"; };
 		CE6A51F31F01575A005DA237 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		CE6A51F41F01575A005DA237 /* APIRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestBuilder.swift; sourceTree = "<group>"; };
-		CE6A51F51F01575A005DA237 /* APIRequestParameter+Confirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIRequestParameter+Confirm.swift"; sourceTree = "<group>"; };
-		CE6A51F61F01575A005DA237 /* APIRequestParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestParameter.swift; sourceTree = "<group>"; };
-		CE6A51F71F01575A005DA237 /* APIRequestParameterArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestParameterArray.swift; sourceTree = "<group>"; };
-		CE6A51F81F01575A005DA237 /* APIRequestParameterDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestParameterDictionary.swift; sourceTree = "<group>"; };
-		CE6A51F91F01575A005DA237 /* APIRequestParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestParameterEncoding.swift; sourceTree = "<group>"; };
 		CE6A51FA1F01575A005DA237 /* CallbackQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackQueue.swift; sourceTree = "<group>"; };
 		CE6A51FB1F01575A005DA237 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE6A51FC1F01575A005DA237 /* SwiftyAPIRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyAPIRequest.h; sourceTree = "<group>"; };
@@ -32,16 +42,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE2BCB4E1F01D52500711238 /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				CE2BCB4F1F01D52500711238 /* APIRequestAdapter.swift */,
+			);
+			path = Adapters;
+			sourceTree = "<group>";
+		};
+		CE2BCB501F01D52500711238 /* Encodings */ = {
+			isa = PBXGroup;
+			children = (
+				CE2BCB511F01D52500711238 /* APIRequestParameterEncoding.swift */,
+			);
+			path = Encodings;
+			sourceTree = "<group>";
+		};
+		CE2BCB521F01D52500711238 /* RequestParameters */ = {
+			isa = PBXGroup;
+			children = (
+				CE2BCB531F01D52500711238 /* APIRequestParameter+Confirm.swift */,
+				CE2BCB541F01D52500711238 /* APIRequestParameter.swift */,
+				CE2BCB551F01D52500711238 /* APIRequestParameterArray.swift */,
+				CE2BCB561F01D52500711238 /* APIRequestParameterDictionary.swift */,
+			);
+			path = RequestParameters;
+			sourceTree = "<group>";
+		};
 		CE6A51F21F01575A005DA237 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CE2BCB4E1F01D52500711238 /* Adapters */,
+				CE2BCB501F01D52500711238 /* Encodings */,
+				CE2BCB521F01D52500711238 /* RequestParameters */,
 				CE6A51F31F01575A005DA237 /* APIRequest.swift */,
 				CE6A51F41F01575A005DA237 /* APIRequestBuilder.swift */,
-				CE6A51F51F01575A005DA237 /* APIRequestParameter+Confirm.swift */,
-				CE6A51F61F01575A005DA237 /* APIRequestParameter.swift */,
-				CE6A51F71F01575A005DA237 /* APIRequestParameterArray.swift */,
-				CE6A51F81F01575A005DA237 /* APIRequestParameterDictionary.swift */,
-				CE6A51F91F01575A005DA237 /* APIRequestParameterEncoding.swift */,
 				CE6A51FA1F01575A005DA237 /* CallbackQueue.swift */,
 				CE6A51FB1F01575A005DA237 /* Info.plist */,
 				CE6A51FC1F01575A005DA237 /* SwiftyAPIRequest.h */,
@@ -108,6 +143,7 @@
 				TargetAttributes = {
 					CEA288861F015708007B1956 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -144,6 +180,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE2BCB571F01D52500711238 /* APIRequestAdapter.swift in Sources */,
+				CE2BCB5A1F01D52500711238 /* APIRequestParameter.swift in Sources */,
+				CE2BCB581F01D52500711238 /* APIRequestParameterEncoding.swift in Sources */,
+				CE2BCB5B1F01D52500711238 /* APIRequestParameterArray.swift in Sources */,
+				CE2BCB5C1F01D52500711238 /* APIRequestParameterDictionary.swift in Sources */,
+				CE2BCB591F01D52500711238 /* APIRequestParameter+Confirm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +296,7 @@
 		CEA288901F015708007B1956 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -266,6 +309,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = moaible.SwiftyAPIRequest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -273,6 +317,7 @@
 		CEA288911F015708007B1956 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
