@@ -28,10 +28,6 @@ struct ExampleGETRequest: APIRequest {
         return ["test": "value1"]
     }
     
-    var httpHeaderFields: [String : String] {
-        return [:]
-    }
-    
     func parse(for data: Data, response: HTTPURLResponse) throws -> Response {
         return true
     }

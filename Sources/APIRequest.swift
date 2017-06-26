@@ -63,6 +63,10 @@ extension APIRequest {
         return JSONEncoding()
     }
     
+    public var httpHeaderFields: [String : String] {
+        return [:]
+    }
+    
     public func canParse(for data: Data, response: HTTPURLResponse) -> Bool {
         guard 200 ..< 300 ~= response.statusCode else {
             return false
