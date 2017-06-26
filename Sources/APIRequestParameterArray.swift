@@ -1,6 +1,6 @@
 //
 //  APIRequestParameterArray.swift
-//  SwAPIClient
+//  SwiftyAPIRequest
 //
 //  Created by Hiromi Motodera on 2017/06/23.
 //

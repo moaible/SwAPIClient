@@ -1,6 +1,6 @@
 //
 //  APIRequestParameterTests.swift
-//  SwAPIClientTests
+//  SwiftyAPIRequestTests
 //
 //  Created by Hiromi Motodera on 6/24/17.
 //

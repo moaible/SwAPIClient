@@ -1,6 +1,6 @@
 //
 //  APIRequestParameterEncoding.swift
-//  SwAPIClientTests
+//  SwiftyAPIRequestTests
 //
 //  Created by Hiromi Motodera on 6/26/17.
 //
@@ -54,10 +54,10 @@ public struct JSONEncoding: APIRequestParameterEncoding {
     public func encode(_ request: URLRequest, parameters: APIRequestParameter?) throws -> URLRequest {
         var request = request
         guard JSONSerialization.isValidJSONObject(parameters.requestParameterValue()) else {
-            throw APIClientError.parseCheckError
+            throw SwiftyAPIRequestError.parseCheckError
         }
         guard let jsonData = try? JSONSerialization.data(withJSONObject: parameters.requestParameterValue(), options: []) else {
-            throw APIClientError.parseCheckError
+            throw SwiftyAPIRequestError.parseCheckError
         }
         request.httpBody = jsonData
         return request

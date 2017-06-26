@@ -1,6 +1,6 @@
 //
-//  APIClient.swift
-//  SwAPIClient
+//  SwiftyAPIRequest.swift
+//  SwSwiftyAPIRequest
 //
 //  Created by Hiromi Motodera on 2017/06/22.
 //
@@ -9,7 +9,7 @@
 import Foundation
 import Result
 
-public enum APIClientError: Error {
+public enum SwiftyAPIRequestError: Error {
     
     case buildRequestError(Error)
     case responseError(URLRequest, URLResponse?, Error)
@@ -18,13 +18,13 @@ public enum APIClientError: Error {
     case unmatchParseError(URLRequest, URLResponse?)
 }
 
-public class APIClient {
+public class SwiftyAPIRequest {
     
-    private static let privateShared: APIClient = {
-        return APIClient()
+    private static let privateShared: SwiftyAPIRequest = {
+        return SwiftyAPIRequest()
     }()
     
-    public class var shared: APIClient {
+    public class var shared: SwiftyAPIRequest {
         return privateShared
     }
     
@@ -33,7 +33,7 @@ public class APIClient {
     public func send<Request: APIRequest>(
         request: Request,
         callbackQueue: CallbackQueue? = nil,
-        handler: @escaping (Result<Request.Response, APIClientError>) -> Void = { _ in })
+        handler: @escaping (Result<Request.Response, SwiftyAPIRequestError>) -> Void = { _ in })
     {
         let callbackQueue = callbackQueue ?? .main
         let urlRequest: URLRequest
@@ -53,14 +53,14 @@ public class APIClient {
         }
         
         URLSession.shared.dataTask(with: urlRequest) { (data, urlResponse, error) in
-            let result: Result<Request.Response, APIClientError>
+            let result: Result<Request.Response, SwiftyAPIRequestError>
             switch (data, urlResponse, error) {
             case (_, _, let error?):
                 result = .failure(.responseError(urlRequest, urlResponse, error))
             case (let data?, let urlResponse as HTTPURLResponse, _):
                 do {
                     guard request.canParse(for: data, response: urlResponse) else {
-                        throw APIClientError.parseCheckError
+                        throw SwiftyAPIRequestError.parseCheckError
                     }
                     result = .success(try request.parse(for: data, response: urlResponse))
                 } catch {
