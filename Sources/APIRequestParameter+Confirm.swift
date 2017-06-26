@@ -52,13 +52,19 @@ extension Array: APIRequestParameter {
     }
 }
 
-extension Dictionary: APIRequestParameter {
+extension Dictionary where Key == String, Value == APIRequestParameter {
     
-    public func requestParameterValue() -> APIRequestParameter {
+    func requestParameterValue() -> APIRequestParameter {
         return self
     }
 }
 
+extension Dictionary: APIRequestParameter {
+    
+    public func requestParameterValue() -> APIRequestParameter {
+        fatalError("Not casting, use 'Dictionary<String, APIRequestParameter>' type")
+    }
+}
 
 extension NSNull: APIRequestParameter {
     

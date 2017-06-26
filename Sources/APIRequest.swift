@@ -35,6 +35,8 @@ public protocol APIRequest {
     
     var parameters: APIRequestParameter? { get }
     
+    var parameterFields: APIRequestParameterDictionary? { get }
+    
     var parameterEncoding: APIRequestParameterEncoding { get }
     
     func canParse(for data: Data, response: HTTPURLResponse) -> Bool
@@ -47,7 +49,11 @@ public protocol APIRequest {
 extension APIRequest {
     
     var parameters: APIRequestParameter? {
-        return nil
+        return self.parameterFields
+    }
+    
+    var parameterFields: APIRequestParameterDictionary? {
+        return [:]
     }
     
     var parameterEncoding: APIRequestParameterEncoding {

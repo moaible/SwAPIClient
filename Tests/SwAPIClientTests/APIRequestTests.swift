@@ -24,7 +24,11 @@ class APIRequestTests: XCTestCase {
         XCTAssertEqual(getRequest.path, "/get")
         XCTAssertEqual(getRequest.httpHeaderFields, [:])
         XCTAssertEqual(getRequest.method, .get)
-        XCTAssertEqual((getRequest.parameters as? APIRequestParameterDictionary)?.value["test"] as? String, "value1")
+        if let dict = getRequest.parameters as? APIRequestParameterDictionary {
+            XCTAssertEqual(dict.value["test"] as? String, "value1")
+        } else {
+            XCTAssert(false)
+        }
         XCTAssertEqual(try? getRequest.parse(for: Data(), response: HTTPURLResponse()), true)
         XCTAssertEqual(getRequest.mockResponse(), false)
     }

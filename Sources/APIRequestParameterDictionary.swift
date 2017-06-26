@@ -38,7 +38,24 @@ public struct APIRequestParameterDictionary: APIRequestParameter {
                 dictionary[k] = v?.requestParameterValue() ?? NSNull().requestParameterValue()
             }
         }
-        return dictionary
+        return dictionary.requestParameterValue()
+    }
+}
+
+extension APIRequestParameterDictionary: ExpressibleByDictionaryLiteral {
+    
+    public typealias Key = String
+    
+    public typealias Value = APIRequestParameter?
+    
+    public init(dictionaryLiteral elements: (Key, Value)...) {
+        self.init(
+            elements.reduce([Key : Value](minimumCapacity: elements.count)) {
+                (dictionary: [Key : Value], element:(key: Key, value: Value)) -> [Key : Value] in
+                var d = dictionary
+                d[element.key] = element.value
+                return d
+        })
     }
 }
 
@@ -50,6 +67,13 @@ protocol APIRequestParameterDictionaryConvertible: APIRequestParameter {
 extension APIRequestParameterDictionaryConvertible {
     
     func requestParameterValue() -> APIRequestParameter {
-        return requestParameterDictionary().requestParameterValue()
+        return self.requestParameterDictionary().requestParameterValue()
+    }
+}
+
+extension APIRequestParameterDictionary: APIRequestParameterDictionaryConvertible {
+    
+    func requestParameterDictionary() -> APIRequestParameterDictionary {
+        return self
     }
 }

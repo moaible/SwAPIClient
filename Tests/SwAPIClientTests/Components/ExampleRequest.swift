@@ -24,8 +24,8 @@ struct ExampleGETRequest: APIRequest {
         return .get
     }
     
-    var parameters: APIRequestParameter? {
-        return APIRequestParameterDictionary(["test": "value1"])
+    var parameterFields: APIRequestParameterDictionary? {
+        return ["test": "value1"]
     }
     
     var httpHeaderFields: [String : String] {

@@ -14,16 +14,21 @@ public protocol APIRequestParameterEncoding {
 
 public struct URLEncoding: APIRequestParameterEncoding {
     
+    public enum Error: Swift.Error {
+        case missingURL
+        case failedCastParameter(APIRequestParameter?)
+    }
+    
     public func encode(_ request: URLRequest, parameters: APIRequestParameter?) throws -> URLRequest {
         var request = request
         guard let url = request.url else {
-            throw APIClientError.parseCheckError
+            throw Error.missingURL
         }
         guard var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
-            throw APIClientError.parseCheckError
+            return request
         }
         guard let queryParameters = parameters.requestParameterValue() as? [String: Any] else {
-            throw APIClientError.parseCheckError
+            return request
         }
         components.percentEncodedQuery = self.string(from: queryParameters)
         request.url = components.url
