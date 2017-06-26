@@ -48,22 +48,22 @@ public protocol APIRequest {
 
 extension APIRequest {
     
-    var parameters: APIRequestParameter? {
+    public var parameters: APIRequestParameter? {
         return self.parameterFields
     }
     
-    var parameterFields: APIRequestParameterDictionary? {
+    public var parameterFields: APIRequestParameterDictionary? {
         return [:]
     }
     
-    var parameterEncoding: APIRequestParameterEncoding {
+    public var parameterEncoding: APIRequestParameterEncoding {
         if [.get, .head, .delete].contains(self.method) {
             return URLEncoding()
         }
         return JSONEncoding()
     }
     
-    func canParse(for data: Data, response: HTTPURLResponse) -> Bool {
+    public func canParse(for data: Data, response: HTTPURLResponse) -> Bool {
         guard 200 ..< 300 ~= response.statusCode else {
             return false
         }
