@@ -30,8 +30,8 @@ public class SwiftyAPIRequest {
     
     public var shouldUseMockRequest: Bool = false
     
-    public func send<Request: APIRequest>(
-        request: Request,
+    public func request<Request: APIRequest>(
+        _ request: Request,
         callbackQueue: CallbackQueue? = nil,
         handler: @escaping (Result<Request.Response, SwiftyAPIRequestError>) -> Void = { _ in })
     {
