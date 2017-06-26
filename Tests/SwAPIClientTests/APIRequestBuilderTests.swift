@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import SwAPIClient
+@testable import SwiftyAPIRequest
 
 class APIRequestBuilderTests: XCTestCase {
         

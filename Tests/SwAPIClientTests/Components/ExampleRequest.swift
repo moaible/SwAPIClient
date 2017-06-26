@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@testable import SwAPIClient
+@testable import SwiftyAPIRequest
 
 struct ExampleGETRequest: APIRequest {
     
