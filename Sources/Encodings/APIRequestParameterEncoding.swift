@@ -51,14 +51,17 @@ public struct URLEncoding: APIRequestParameterEncoding {
 
 public struct JSONEncoding: APIRequestParameterEncoding {
     
+    public enum Error: Swift.Error {
+        case invalidJSONParameters(APIRequestParameter?)
+        case failedCastParameter(APIRequestParameter?)
+    }
+    
     public func encode(_ request: URLRequest, parameters: APIRequestParameter?) throws -> URLRequest {
         var request = request
         guard JSONSerialization.isValidJSONObject(parameters.requestParameterValue()) else {
-            throw SwiftyAPIRequestError.parseCheckError
+            throw Error.invalidJSONParameters(parameters)
         }
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: parameters.requestParameterValue(), options: []) else {
-            throw SwiftyAPIRequestError.parseCheckError
-        }
+        let jsonData = try JSONSerialization.data(withJSONObject: parameters.requestParameterValue(), options: [])
         request.httpBody = jsonData
         return request
     }
