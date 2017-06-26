@@ -20,17 +20,9 @@ public enum SwiftyAPIRequestError: Error {
 
 public class SwiftyAPIRequest {
     
-    private static let privateShared: SwiftyAPIRequest = {
-        return SwiftyAPIRequest()
-    }()
+    public static var shouldUseMockRequest: Bool = false
     
-    public class var shared: SwiftyAPIRequest {
-        return privateShared
-    }
-    
-    public var shouldUseMockRequest: Bool = false
-    
-    public func request<Request: APIRequest>(
+    public static func request<Request: APIRequest>(
         _ request: Request,
         callbackQueue: CallbackQueue? = nil,
         handler: @escaping (Result<Request.Response, SwiftyAPIRequestError>) -> Void = { _ in })
