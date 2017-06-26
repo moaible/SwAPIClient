@@ -1,6 +1,6 @@
 //
 //  APIRequestTests.swift
-//  ios-inhouse-sdkTests
+//  SwAPIClient
 //
 //  Created by Hiromi Motodera on 2017/06/23.
 //

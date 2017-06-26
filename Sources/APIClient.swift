@@ -1,6 +1,6 @@
 //
 //  APIClient.swift
-//  XwireAd
+//  SwAPIClient
 //
 //  Created by Hiromi Motodera on 2017/06/22.
 //

@@ -1,6 +1,6 @@
 //
 //  APIRequestParameter.swift
-//  ios-inhouse-sdkTests
+//  SwAPIClient
 //
 //  Created by Hiromi Motodera on 6/23/17.
 //
